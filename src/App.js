@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  Box,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { ImageGrid } from "./Component/ImageGrid";
 
-function App() {
+import { Title } from "./Component/Title";
+import { UploadForm } from "./Component/UploadForm";
+
+export const App = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Box mx="40" minH="100vh">
+      <Title />
+      <UploadForm />
+      <ImageGrid setSelectedImage={setSelectedImage} onOpen={onOpen} />
 
-export default App;
+      <Modal isOpen={isOpen} onClose={onClose} size='lg'>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Large View</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image mb='15px' rounded="md" src={selectedImage} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Box>
+  );
+};
