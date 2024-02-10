@@ -7,13 +7,15 @@ export const useFirestore = (table) => {
 
   const collectionRef = collection(db, table);
 
+  const getUrls = async () => {
+    const data = await getDocs(collectionRef);
+    let dataArray = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    setDocs(dataArray);
+  };
+
   useEffect(() => {
-    const getUrls = async () => {
-      const data = await getDocs(collectionRef);
-      setDocs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
     getUrls();
-  }, [collection]);
+  }, [table]);
 
   return { docs };
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Box, Circle, Flex, Text, Input, InputGroup } from "@chakra-ui/react";
+import { Circle, Flex, Text, Input, InputGroup } from "@chakra-ui/react";
 
 import { ProgressBar } from "./ProgressBar";
 
@@ -24,6 +24,7 @@ export const UploadForm = () => {
 
   return (
     <Flex
+      px={[20, 20, 30, 40]}
       justifyContent="center"
       alignItems="center"
       mt="20px"
@@ -52,14 +53,15 @@ export const UploadForm = () => {
       </label>
 
       {error && (
-        <Text mt="5px" fontSize="sm">
+        <Text mt="5px" fontSize="sm" color='tomato'>
           {error}
         </Text>
       )}
 
       {file && (
-        <Text mt="5px" fontSize="sm">
-          {file.name}
+        <Text mt="5px" fontSize="sm" >
+          <Text as='samp' mr='10px'>Uploading...</Text>
+          <Text as='samp'>{`"${file.name}"`}</Text>
         </Text>
       )}
 

@@ -3,7 +3,7 @@ import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCy1nFzbT_xi5tUZLL79FJ1YEgLTXoQuoI",
+  apiKey: process.env.apiKey,
   authDomain: "photogallary-c2619.firebaseapp.com",
   projectId: "photogallary-c2619",
   storageBucket: "photogallary-c2619.appspot.com",

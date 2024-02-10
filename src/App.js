@@ -1,40 +1,17 @@
-import {
-  Box,
-  Image,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { ImageGrid } from "./Component/ImageGrid";
+import React from "react";
+import { Box } from "@chakra-ui/react";
 
-import { Title } from "./Component/Title";
-import { UploadForm } from "./Component/UploadForm";
+import { Navbar } from "./Component/Navbar";
+import { Body } from "./Component/Body";
+import { Footer } from "./Component/Footer";
 
 export const App = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
-    <Box mx="40" minH="100vh">
-      <Title />
-      <UploadForm />
-      <ImageGrid setSelectedImage={setSelectedImage} onOpen={onOpen} />
-
-      <Modal isOpen={isOpen} onClose={onClose} size='lg'>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Large View</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Image mb='15px' rounded="md" src={selectedImage} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+    <Box minH="100vh">
+      <Navbar>
+        <Body />
+        <Footer />
+      </Navbar>
     </Box>
   );
 };

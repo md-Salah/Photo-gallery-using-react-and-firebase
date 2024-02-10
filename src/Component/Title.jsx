@@ -3,12 +3,11 @@ import React from "react";
 
 export const Title = () => {
   return (
-    <Box>
-      <Text mt="2">PhotoGallary</Text>
-      <Heading textAlign="center" mt="50px" size='lg' fontWeight='semibold'>
+    <Box fontFamily='fantasy' px={{base: '30px', md:'40px'}}>
+      <Heading textAlign="center" mt="100px" size='lg' fontWeight='semibold'>
         Your pictures
       </Heading>
-      <Text textAlign="center" mt="10px">
+      <Text textAlign="center" mt="10px" noOfLines='2'>
         Save Your Pictures here and download anytime on the go
       </Text>
     </Box>
